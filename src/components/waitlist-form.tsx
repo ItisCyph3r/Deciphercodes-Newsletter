@@ -16,7 +16,24 @@ export default function WaitListForm() {
         e.preventDefault();
 
         if (isValidEmail(email)) {
-
+            fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'appication/json',
+                },
+                body: JSON.stringify({email: email)
+            }).then((response ) => {
+                if(response.ok){
+                    return response.json();
+                } else {
+                    throw new Error('Request Failed);
+                }
+            }).then((data) => {
+                console.log(data)
+            }.catch(error => {
+               console.error(error); 
+            })
+        
             toast.success('Glad to have you on our journey')
         } else {
             toast.error('Enter a valid email')
