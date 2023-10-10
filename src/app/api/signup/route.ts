@@ -1,7 +1,7 @@
 // pages/api/signup.js
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from "next/server"
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: Request, res: Response) {
     if (req.method === 'POST') {
         const email = req.body.email;
 
@@ -32,16 +32,38 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
 
         if (response.status === 200) {
-            res.status(200).json({ message: 'Success' });
+
+            
+    
+
+            
+            NextResponse.json({
+                message:'Success'
+            }, {
+                status: 200,
+            })
         } else {
-            res.status(400).json({ message: 'Failure' });
+            NextResponse.json({
+                message:'Failure'
+            }, {
+                status: 400,
+            })
         }
         } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
+            console.error(error);
+
+            NextResponse.json({
+                message: 'Internal Server Error'
+            }, {
+                status: 500,
+            })
         }
     } else {
         // Handle other HTTP methods if necessary
-        res.status(405).end(); // Method Not Allowed
+        NextResponse.json({
+            message: 'Method Not Allowed'
+        }, {
+            status: 405,
+        })
     }
 }
