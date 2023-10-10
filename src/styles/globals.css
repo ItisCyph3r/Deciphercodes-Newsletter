@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@layer base {
+  html,
+  body,
+  h1,
+  p {
+    font-family: "Roboto", system-ui, sans-serif;
+  }
+}
+
+* {
+  /* outline: 1px solid red; */
+}
+
+input {
+  @apply outline-none border-none text-main-black/70 font-normal leading-normal text-2xl;
+}
+
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+  outline: 0;
+  border: 1px solid #6528f7;
+}
+
+input::placeholder {
+  @apply text-main-black/70 font-normal leading-normal text-2xl;
+}
+
+button {
+  @apply transition-all duration-300 transform;
+}
+
+button:hover,
+button:focus,
+button:active {
+  @apply bg-opacity-80;
+}
+
+button:disabled {
+  background-color: #d4d4d4 !important;
+  color: #000;
+}
+
+button:disabled:hover {
+  background-color: #d4d4d4 !important;
+  color: #000;
+  outline: 0;
+  border: 0;
+}
+
+section {
+  @apply py-[10%] md:py-[7.5%] px-[5%] min-h-[100svh] w-full;
+}
+
+/* TYPOGRAPHY */
+.nav-text {
+  @apply font-medium text-base text-[#1b1b1b] leading-4 cursor-pointer hover:text-main-purple pb-2 duration-300 transition relative text-center w-full md:w-auto overflow-x-hidden;
+}
+
+.title-text {
+  @apply font-semibold text-5xl;
+}
+
+.sub-title-text {
+  @apply font-semibold text-[2rem] leading-9;
+}
+
+.body-text {
+  @apply font-normal text-2xl;
+}
+
+/* FLEX TEMPLATE */
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
